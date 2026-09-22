@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Scheduler AI Agent</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar for Scheduled Meetings -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fa-solid fa-calendar-check logo-icon"></i>
+                    <h2>Scheduler AI</h2>
+                </div>
+                <span class="badge badge-live">Gemini 3.6 Flash</span>
+            </div>
+            
+            <div class="sidebar-section">
+                <div class="section-title">
+                    <span><i class="fa-solid fa-clock-rotate-left"></i> Booked Meetings</span>
+                    <button id="refresh-meetings-btn" class="icon-btn" title="Refresh"><i class="fa-solid fa-rotate-right"></i></button>
+                </div>
+                <div id="meetings-list" class="meetings-list">
+                    <div class="empty-state">
+                        <i class="fa-regular fa-calendar-xmark"></i>
+                        <p>No meetings booked yet</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="avatar"><i class="fa-solid fa-user-astronaut"></i></div>
+                    <div class="user-info">
+                        <span class="user-name">Mukesh Raturi</span>
+                        <span class="user-status"><i class="fa-solid fa-circle online-dot"></i> Agent Active</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-main">
+            <!-- Header -->
+            <header class="chat-header">
+                <div class="header-info">
+                    <h1>Meeting Assistant</h1>
+                    <p>Ask me to check availability, schedule syncs, or manage your calendar</p>
+                </div>
+                <div class="header-actions">
+                    <span class="status-indicator">
+                        <span class="ping-dot"></span>
+                        Auto-Function Calling Enabled
+                    </span>
+                </div>
+            </header>
+
+            <!-- Chat Messages Container -->
+            <div id="chat-messages" class="chat-messages">
+                <div class="message assistant-message">
+                    <div class="avatar bot-avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div class="message-content">
+                        <p>Hello Mukesh! 👋 I am your <strong>Meeting Scheduler AI Agent</strong>.</p>
+                        <p>How can I help with your calendar today? You can ask me to:</p>
+                        <ul>
+                            <li>Check available time slots for any date</li>
+                            <li>Book a meeting with attendees and agenda</li>
+                            <li>List all upcoming scheduled meetings</li>
+                            <li>Cancel a scheduled meeting by ID</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Suggestions Toolbar -->
+            <div class="quick-suggestions">
+                <button class="suggestion-pill" data-prompt="What time slots are available tomorrow?">
+                    <i class="fa-solid fa-calendar-day"></i> Check Slots Tomorrow
+                </button>
+                <button class="suggestion-pill" data-prompt="Schedule a 30-min sync titled 'Sprint Demo' with Alex (alex@example.com) on 2026-09-24 at 02:30 PM">
+                    <i class="fa-solid fa-plus-circle"></i> Book Sprint Demo
+                </button>
+                <button class="suggestion-pill" data-prompt="Show all my scheduled meetings">
+                    <i class="fa-solid fa-list-check"></i> List Meetings
+                </button>
+            </div>
+
+            <!-- Input Bar -->
+            <div class="chat-input-container">
+                <form id="chat-form" class="chat-form">
+                    <input 
+                        type="text" 
+                        id="user-input" 
+                        placeholder="Type a request (e.g. Schedule 45-min meeting with Sarah tomorrow at 10 AM)..." 
+                        autocomplete="off"
+                        required
+                    />
+                    <button type="submit" id="send-btn" class="send-btn">
+                        <span>Send</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
